@@ -3,6 +3,7 @@
 // require_once __DIR__ . '/../models/News.php';
 
 class NewsController
+extends AbstractModel
 {
 public function actionAll() {
     $items = News::getAll();
