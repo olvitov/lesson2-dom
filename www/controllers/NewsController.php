@@ -3,17 +3,27 @@
 // require_once __DIR__ . '/../models/News.php';
 
 class NewsController
-extends AbstractModel
+
 {
 public function actionAll() {
-    $items = News::getAll();
-    include __DIR__ . '/../views/news/all.php';
+
+    $news = News::getAll();
+    $view = new View();
+    $view->items = $news;
+    $view->display('news/all.php');
+
+
+
 }
     public function actionOne() {
 
 
         $id = $_GET['id'];
-        $item = News::getOne($id);
-        include __DIR__ . '/../views/news/one.php';
+        $news = News::getOne($id);
+        $view = new View();
+        $view->item = $news;
+        $view->display('news/one.php');
+
     }
+
 }
