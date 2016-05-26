@@ -7,12 +7,10 @@ class NewsController
 {
     public function actionAll() {
 
-        $db = new DB();
-        $res = $db->query('SELECT * FROM news WHERE  id=:id',
-            [':id' => 11]);
-        var_dump($res);
-        die;
+        var_dump(
+            NewsModel::findAll()
 
+        );
 
 
     /*
