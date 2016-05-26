@@ -8,12 +8,22 @@
  */
 class DB
 {
+    private $dbh;
     public function __construct()
     {
-      mysql_connect('localhost', 'root', '');
-        mysql_select_db('test');
+
+
+        $this->dbh =  new PDO('mysql:dbname=test;host=localhost', 'root', '');
     }
 
+    public function query($sql, $params=[]) {
+
+        $sth =  $this->dbh->prepare($sql);
+        $sth->execute($params);
+       return $sth->fetchAll(PDO::FETCH_OBJ);
+}
+
+    /*
     public function queryAll($sql, $class = 'stdClass') {
 
         $res = mysql_query($sql);
@@ -32,4 +42,5 @@ class DB
 
     return $this->queryAll($sql, $class)[0];
     }
+    */
 }
