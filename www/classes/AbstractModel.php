@@ -25,7 +25,7 @@ public static function findOneByPk($id) {
     $sql = 'SELECT * FROM ' .static::$table . ' WHERE id=:id';
     $db = new DB();
     $db->setClassName($class);
-    return $db->query($sql, [':id' => $id]);
+    return $db->query($sql, [':id' => $id])[0];
 
 }
 
