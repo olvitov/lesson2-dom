@@ -2,39 +2,25 @@
 
 // require_once __DIR__ . '/../models/News.php';
 
+
 class NewsController
 
 {
     public function actionAll() {
 
-        var_dump(
-            NewsModel::findAll()
 
-        );
-
-
-    /*
-public function actionAll() {
-
-    $news = News::getAll();
-    $view = new View();
-    $view->items = $news;
-    $view->display('news/all.php');
+        $article = new NewsModel();
+        $article->title = 'Привет! 2';
+        $article->text = 'Привет, мир! 2';
+        $article-> author = 'Олвит';
+       $article->insert();
 
 
-*/
+
+
 }
 
-    public function actionOne() {
 
-
-        $id = $_GET['id'];
-        $news = News::getOne($id);
-        $view = new View();
-        $view->item = $news;
-        $view->display('news/one.php');
-
-    }
 
 
 }
