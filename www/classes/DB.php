@@ -9,7 +9,8 @@
 class DB
 {
     private $dbh;
-    private $className = 'stdClass';
+   private $className = 'stdClass';
+
     public function __construct()
     {
 
@@ -22,6 +23,7 @@ class DB
 
 }
 
+
     public function query($sql, $params=[]) {
 
         $sth =  $this->dbh->prepare($sql);
@@ -30,15 +32,18 @@ class DB
 }
 
 
-
-
-
     public function execute($sql, $params=[]) {
 
         $sth =  $this->dbh->prepare($sql);
       return  $sth->execute($params);
-         
+
     }
 
-   
+    public function lastInsertId() {
+
+        return $this->dbh->lastInsertId();
+
+    }
+
+
 }

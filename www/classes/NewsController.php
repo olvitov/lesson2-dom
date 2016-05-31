@@ -8,16 +8,12 @@ class NewsController
 {
     public function actionAll() {
 
+        $art = NewsModel::findOneByColumn('title', 'Привет CCCR!');
+        $art->title ='Спокойной ночи малыши 1234';
 
-        $article = new NewsModel();
-        $article->title = 'Привет! 2';
-        $article->text = 'Привет, мир! 2';
-        $article-> author = 'Олвит';
-       $article->insert();
+        $art->save();
 
-
-
-
+        var_dump($art->id);
 }
 
 
