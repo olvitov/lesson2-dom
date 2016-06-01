@@ -50,12 +50,13 @@ public static function findOneByPk($id) {
         $db = new DB();
         $db->setClassName(get_called_class());
         $sql = 'SELECT * FROM ' . static::$table . ' WHERE '. $column . '=:value';
-        $res =  $db->query($sql, [':value' => $value]);
+      //  $res =  $db->query($sql, [':value' => $value]);
+        if (empty($res)) {
+          throw new ModelException('Ничего не найдено');
 
-        if (!empty($res)) {
-            return $res[0];
-        }
-        return false;
+                }
+        
+        return $res;
 
     }
     
@@ -102,7 +103,7 @@ INSERT INTO ' . static::$table . '
             $cols[] = $k . '=:' . $k;
         }
       // var_dump($cols);
-      var_dump($data);
+     // var_dump($data);
 
             $sql = '
             UPDATE ' . static::$table . '
