@@ -33,7 +33,6 @@ class View
         echo $this->render($template);
     }
 
-
    public function count() {
 
      //  var_dump($this->data);

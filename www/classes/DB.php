@@ -1,13 +1,6 @@
 <?php
 
-/**
- * Created by PhpStorm.
- * User: olvit
- * Date: 17.05.2016
- * Time: 11:33
- */
-class DB
-{
+class DB {
     private $dbh;
    private $className = 'stdClass';
 
@@ -30,8 +23,6 @@ class DB
         $sth->execute($params);
        return $sth->fetchAll(PDO::FETCH_CLASS, $this->className);
 }
-
-
     public function execute($sql, $params=[]) {
 
         $sth =  $this->dbh->prepare($sql);
@@ -42,8 +33,5 @@ class DB
     public function lastInsertId() {
 
         return $this->dbh->lastInsertId();
-
     }
-
-
 }

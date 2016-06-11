@@ -1,1 +1,8 @@
 AddDefaultCharset utf-8
+
+RewriteEngine On
+
+
+RewriteBase /www
+
+RewriteRule ^(.*)$ index.php

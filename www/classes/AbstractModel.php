@@ -34,7 +34,7 @@ abstract class AbstractModel
         return $db->query($sql);
     }
     
-public static function findOneByPk($id) {
+public static function findOneByPk($id, $value) {
 
     $class = get_called_class();
 
@@ -49,8 +49,8 @@ public static function findOneByPk($id) {
 
         $db = new DB();
         $db->setClassName(get_called_class());
-        $sql = 'SELECT * FROM ' . static::$table . ' WHERE '. $column . '=:value';
-      //  $res =  $db->query($sql, [':value' => $value]);
+        $sql = 'SELECT * FROM ' . static::$table . ' WHERE ' . $column . '=:value';
+        $res =  $db->query($sql, [':value' => $value]);
         if (empty($res)) {
           throw new ModelException('Ничего не найдено');
 
@@ -60,7 +60,7 @@ public static function findOneByPk($id) {
 
     }
     
-    protected function insert() {
+    public function insert() {
 
             $cols = array_keys($this->data);
             $data = [];
