@@ -1,19 +1,19 @@
 <?php
 
-// require_once __DIR__ . '/../classes/DB.php';
+namespace Application\Models;
 
 class News
-extends AbstractModel
+extends \AbstractModel
 {
 
-    public $id;
-    public $title;
+    protected static $table = 'news';
+
+    
+
+    
+   public $id;
+  public $title;
     public $text;
+   public $author;
 
-protected static $table = 'news';
-protected static $class = 'News';
-/*
-   
-*/
 }
-
